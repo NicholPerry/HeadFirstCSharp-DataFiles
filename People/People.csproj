@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC697B3C-C79A-4B08-8EED-18A8FFF64483}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>People</RootNamespace>
+    <AssemblyName>People</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Booths\Booth.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="Booths\GivingBooth.cs" />
+    <Compile Include="Guest.cs" />
+    <Compile Include="Booths\MoneyCollectingBooth.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Restroom.cs" />
+    <Compile Include="Wallet.cs" />
+    <Compile Include="WalletColor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Accounts\Accounts.csproj">
+      <Project>{AABB0BCE-69E1-42F7-854B-28807FD3661C}</Project>
+      <Name>Accounts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Animals\Animals.csproj">
+      <Project>{4fa09a42-1a66-4b84-bbac-c7a43b00ec5a}</Project>
+      <Name>Animals</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BoothItems\BoothItems.csproj">
+      <Project>{93774437-6e18-44bf-b385-d358f1031aeb}</Project>
+      <Name>BoothItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CagedItems\CagedItems.csproj">
+      <Project>{CBDC8202-3A83-46AB-8842-F8B5383E1671}</Project>
+      <Name>CagedItems</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foods\Foods.csproj">
+      <Project>{14375083-d9c4-4241-8f65-a68fcfdb8233}</Project>
+      <Name>Foods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoneyCollectors\MoneyCollectors.csproj">
+      <Project>{15416729-8eb4-4821-8a1e-a81f59fe7cd2}</Project>
+      <Name>MoneyCollectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reproducers\Reproducers.csproj">
+      <Project>{781b0613-0b94-4703-baaa-1acf9ac4f968}</Project>
+      <Name>Reproducers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{D9CC117F-1446-4266-8A04-94BD84DFB735}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VendingMachines\VendingMachines.csproj">
+      <Project>{44a36954-d455-4af8-974a-0227cfe480ca}</Project>
+      <Name>VendingMachines</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

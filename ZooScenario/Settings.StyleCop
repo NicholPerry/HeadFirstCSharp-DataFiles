@@ -1,0 +1,8 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>hatchable</Value>
+      <Value>Wuv</Value>
+    </CollectionProperty>
+  </GlobalSettings>
+</StyleCopSettings>
