@@ -1,4 +1,6 @@
-﻿using Reproducers;
+﻿using Animals;
+using Reproducers;
+using Utilities;
 
 namespace Animals
 {
@@ -17,12 +19,15 @@ namespace Animals
         public Bird(string name, int age, double weight, Gender gender)
             : base(name, age, weight, gender)
         {
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.Fly);
+            this.EatBehavior = new ConsumeBehavior();
+            this.ReproduceBehavior = new LayEggBehavior();
         }
 
         /// <summary>
         /// Gets the percentage of weight gained for each pound of food eaten.
         /// </summary>
-        protected override double WeightGainPercentage
+        public override double WeightGainPercentage
         {
             get
             {
@@ -36,54 +41,6 @@ namespace Animals
         public void Hatch()
         {
             // Break out of egg.
-        }
-
-        /// <summary>
-        /// Moves by flying.
-        /// </summary>
-        public override void Move()
-        {
-            // Fly.
-        }
-
-        /// <summary>
-        /// Creates another reproducer of its own type.
-        /// </summary>
-        /// <returns>The resulting baby reproducer.</returns>
-        public override IReproducer Reproduce()
-        {
-            // Lay an egg.
-            IReproducer baby = this.LayEgg();
-
-            // If the baby is hatchable...
-            if (baby is IHatchable)
-            {
-                // Hatch the baby out of its egg.
-                this.HatchEgg(baby as IHatchable);
-            }
-
-            // Return the (hatched) baby.
-            return baby;
-        }
-
-        /// <summary>
-        /// Hatches an egg.
-        /// </summary>
-        /// <param name="egg">The egg to hatch.</param>
-        private void HatchEgg(IHatchable egg)
-        {
-            // Hatch the egg.
-            egg.Hatch();
-        }
-
-        /// <summary>
-        /// Lays an egg.
-        /// </summary>
-        /// <returns>The resulting egg.</returns>
-        private IReproducer LayEgg()
-        {
-            // Return a baby (in egg form).
-            return base.Reproduce();
         }
     }
 }

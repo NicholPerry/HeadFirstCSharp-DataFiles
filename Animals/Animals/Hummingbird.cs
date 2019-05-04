@@ -1,4 +1,5 @@
-﻿using Reproducers;
+﻿using Animals;
+using Reproducers;
 
 namespace Animals
 {
@@ -18,6 +19,7 @@ namespace Animals
             : base(name, age, weight, gender)
         {
             this.BabyWeightPercentage = 17.5;
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.NoMove);
         }
 
         /// <summary>
@@ -29,14 +31,6 @@ namespace Animals
             {
                 return this.Age == 0 ? 0.4 : 0.6;
             }
-        }
-
-        /// <summary>
-        /// Moves by hovering.
-        /// </summary>
-        public override void Move()
-        {
-            // The hummingbird generally moves by hovering.
         }
     }
 }

@@ -107,6 +107,11 @@ namespace Animals
         }
 
         /// <summary>
+        /// Gets or sets the eat behavior.
+        /// </summary>
+        public IEatBehavior EatBehavior { get; set; }
+
+        /// <summary>
         /// Gets or sets the gender of the animal.
         /// </summary>
         public Gender Gender
@@ -160,6 +165,11 @@ namespace Animals
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets the reproduce behavior.
+        /// </summary>
+        public IReproduceBehavior ReproduceBehavior { get; set; }
 
         /// <summary>
         /// Gets or sets the animal's weight (in pounds).
@@ -243,7 +253,7 @@ namespace Animals
         /// <summary>
         /// Gets or sets the weight of a newborn baby (as a percentage of the parent's weight).
         /// </summary>
-        protected double BabyWeightPercentage
+        public double BabyWeightPercentage
         {
             get
             {
@@ -259,10 +269,15 @@ namespace Animals
         /// <summary>
         /// Gets the percentage of weight gained for each pound of food eaten.
         /// </summary>
-        protected abstract double WeightGainPercentage
+        public abstract double WeightGainPercentage
         {
             get;
         }
+
+        /// <summary>
+        /// Gets or sets the value for the move behavior.
+        /// </summary>
+        public IMoveBehavior MoveBehavior { get; set; }
 
         /// <summary>
         /// Converts the animal type to a type.
@@ -303,7 +318,7 @@ namespace Animals
         public virtual void Eat(Food food)
         {
             // Increase animal's weight as a result of eating food.
-            this.Weight += food.Weight * (this.WeightGainPercentage / 100);
+            this.EatBehavior.Eat(this, food);
         }
 
         /// <summary>
@@ -312,24 +327,29 @@ namespace Animals
         public void MakePregnant()
         {
             this.isPregnant = true;
+            this.MoveBehavior = new NoMoveBehavior();
         }
 
         /// <summary>
         /// Moves about.
         /// </summary>
-        public abstract void Move();
+        public virtual void Move()
+        {
+            this.MoveBehavior.Move(this);
+        }
 
         /// <summary>
         /// Creates another reproducer of its own type.
         /// </summary>
         /// <returns>The resulting baby reproducer.</returns>
-        public virtual IReproducer Reproduce()
+        public IReproducer Reproduce()
         {
             // Create a baby reproducer.
-            Animal baby = Activator.CreateInstance(this.GetType(), string.Empty, 0, this.Weight * (this.BabyWeightPercentage / 100)) as Animal;
+            Animal baby = Activator.CreateInstance(this.GetType(), string.Empty, 0, this.Weight * (this.BabyWeightPercentage / 100), this.gender) as Animal;
 
-            // Reduce mother's weight by 25 percent more than the value of the baby's weight.
-            this.Weight -= baby.Weight * 1.25;
+            this.gender = random.Next(0, 2) == 0 ? Gender.Male : Gender.Female;
+
+            this.ReproduceBehavior.Reproduce(this, baby);
 
             // Make mother not pregnant after giving birth.
             this.isPregnant = false;

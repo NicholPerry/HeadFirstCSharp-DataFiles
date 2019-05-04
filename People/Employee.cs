@@ -39,13 +39,29 @@ namespace People
         }
 
         /// <summary>
-        /// Gets the weight of the employee.
+        /// Gets or sets the weight of the employee.
         /// </summary>
         public double Weight
         {
             get
             {
                 // Confidential.
+                return 0.0;
+            }
+
+            set
+            {
+                this.Weight = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the weight gain percentage.
+        /// </summary>
+        public double WeightGainPercentage
+        {
+            get
+            {
                 return 0.0;
             }
         }

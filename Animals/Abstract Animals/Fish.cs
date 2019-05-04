@@ -1,4 +1,5 @@
-﻿using Reproducers;
+﻿using Animals;
+using Reproducers;
 using Utilities;
 
 namespace Animals
@@ -18,29 +19,20 @@ namespace Animals
         public Fish(string name, int age, double weight, Gender gender)
             : base(name, age, weight, gender)
         {
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.Swim);
+            this.EatBehavior = new ConsumeBehavior();
+            this.ReproduceBehavior = new LayEggBehavior();
         }
 
         /// <summary>
         /// Gets the percentage of weight gained for each pound of food eaten.
         /// </summary>
-        protected override double WeightGainPercentage
+        public override double WeightGainPercentage
         {
             get
             {
                 return 5.0;
             }
         }
-
-        /// <summary>
-        /// Moves by swimming.
-        /// </summary>
-        public override void Move()
-        {
-            // Swim. Note that there is a base method that paces, which we are intentionally avoiding.
-            if (this.XDirection == HorizontalDirection.Right)
-
-
-        }
     }
 }
-

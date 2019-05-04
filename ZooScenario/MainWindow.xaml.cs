@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using Accounts;
 using Animals;
 using BirthingRooms;
-using BoothItems;
 using People;
 using Reproducers;
 using Zoos;
@@ -173,6 +171,7 @@ namespace ZooScenario
             this.PopulateAnimalListBox();
             this.PopulateGuestListBox();
             this.animalTypeComboBox.ItemsSource = Enum.GetValues(typeof(AnimalType));
+            this.changeMoveBehaviorComboBox.ItemsSource = Enum.GetValues(typeof(MoveBehaviorType));
         }
 
         /// <summary>
@@ -198,6 +197,26 @@ namespace ZooScenario
             catch (NullReferenceException)
             {
                 MessageBox.Show("An animal must be selected before adding an animal to the zoo.");
+            }
+        }
+
+        /// <summary>
+        /// Changes the type of move behavior for the animal.
+        /// </summary>
+        /// <param name="sender"> The object that initiated the event.</param>
+        /// <param name="e"> The event arguments for the event.</param>
+        private void ChangeMoveBehaviorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Animal animal = this.animalListBox.SelectedItem as Animal;
+            object type = this.changeMoveBehaviorComboBox.SelectedItem;
+
+            if (animal != null && type != null)
+            {
+                animal.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior((MoveBehaviorType)type);
+            }
+            else
+            {
+                MessageBox.Show("Please select an animal and a movement type to change the behavior.");
             }
         }
 
@@ -397,6 +416,37 @@ namespace ZooScenario
                         MessageBox.Show("Please select a guest and an animal.");
                     }                    
                 }
+        }
+
+        /// <summary>
+        /// Allows the animal to give birth if pregnant.
+        /// </summary>
+        /// <param name="sender"> The object that initiated the event.</param>
+        /// <param name="e"> The event arguments for the event.</param>
+        private void BirthAnimalButton_Click(object sender, RoutedEventArgs e)
+        {
+            Animal animal = this.animalListBox.SelectedItem as Animal;
+
+            if (animal == null)
+            {
+                MessageBox.Show("The animal does not exist.");
+            }
+            else
+            {
+                if (animal.IsPregnant == false)
+                {
+                    MessageBox.Show($"The animal: {animal.Name} is not pregnant.");
+                }
+                else if (animal.IsPregnant == true)
+                {
+                    Animal baby = null;
+
+                    baby = animal.Reproduce() as Animal;
+                    this.comoZoo.AddAnimal(baby);
+
+                    this.PopulateAnimalListBox();
+                }
+            }
         }
     }
 }

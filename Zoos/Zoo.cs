@@ -85,7 +85,30 @@ namespace Zoos
         /// <param name="vet"> The zoo's birthing room vet.</param>
         public Zoo(string name, int capacity, int restroomCapacity, decimal animalFoodPrice, decimal ticketPrice, decimal waterBottlePrice, decimal boothMoneyBalance, Employee attendant, Employee vet)
         {
-            this.animals = new List<Animal>();
+             this.animals = new List<Animal>()
+            {
+                new Chimpanzee("Bobo", 10, 128.2, Gender.Male),
+                new Chimpanzee("Bubbles", 3, 103.8, Gender.Female),
+                new Dingo("Spot", 5, 41.3, Gender.Male),
+                new Dingo("Maggie", 6, 37.2, Gender.Female),
+                new Dingo("Toby", 0, 15.0, Gender.Male),
+                new Eagle("Ari", 12, 10.1, Gender.Female),
+                new Hummingbird("Buzz", 2, 0.02, Gender.Male),
+                new Hummingbird("Bitsy", 1, 0.03, Gender.Female),
+                new Kangaroo("Kanga", 8, 72.0, Gender.Female),
+                new Kangaroo("Roo", 0, 23.9, Gender.Male),
+                new Kangaroo("Jake", 9, 153.5, Gender.Male),
+                new Ostrich("Stretch", 26, 231.7, Gender.Male),
+                new Ostrich("Speedy", 30, 213.0, Gender.Female),
+                new Platypus("Patti", 13, 4.4, Gender.Female),
+                new Platypus("Bill", 11, 4.9, Gender.Male),
+                new Platypus("Ted", 0, 1.1, Gender.Male),
+                new Shark("Bruce", 19,  810.6, Gender.Female),
+                new Shark("Anchor", 17, 458.0, Gender.Male),
+                new Shark("Chum", 14, 377.3, Gender.Male),
+                new Squirrel("Chip", 4, 1.0, Gender.Male),
+                new Squirrel("Dale", 4, 0.9, Gender.Male)
+            };
             this.animalSnackMachine = new VendingMachine(animalFoodPrice, new Account());
             this.b168 = new BirthingRoom(vet);
             this.cages = new List<Cage>();
@@ -194,25 +217,6 @@ namespace Zoos
         {
             // Create an instance of the Zoo class.
             Zoo zoo = new Zoo("Como Zoo", 1000, 4, 0.75m, 15.00m, 3.00m, 3640.25m, new Employee("Sam", 42), new Employee("Flora", 98));
-
-            Dingo animal = new Dingo("Drake", 1, 17, Gender.Male);
-            zoo.AddAnimal(animal);
-            animal = new Dingo("Dax", 0, 2, Gender.Male);
-            zoo.AddAnimal(animal);
-
-            Chimpanzee chimp = new Chimpanzee("Chester", 6, 40, Gender.Male);
-            zoo.AddAnimal(chimp);
-            chimp = new Chimpanzee("Charlie", 0, 4, Gender.Male);
-            zoo.AddAnimal(chimp);
-
-            Ostrich ostrich = new Ostrich("Octavia", 0, 3, Gender.Female);
-            zoo.AddAnimal(ostrich);
-
-            Platypus platypus = new Platypus("Perry", 3, 5, Gender.Male);
-            zoo.AddAnimal(platypus);
-
-            Shark shark = new Shark("Bruce", 5, 1500, Gender.Male);
-            zoo.AddAnimal(shark);
 
             // Add money to the animal snack machine.
             zoo.AnimalSnackMachine.AddMoney(42.75m);
@@ -471,6 +475,61 @@ namespace Zoos
             }
 
             return value;
+        }
+
+        /// <summary>
+        /// Sorts the animals.
+        /// </summary>
+        /// <param name="sortType"> The type being sorted. </param>
+        /// <param name="sortValue"> The value being sorted. </param>
+        /// <returns> Returns the result. </returns>
+        public SortResult SortAnimals(string sortType, string sortValue)
+        {
+            SortResult result = null;
+
+            switch (sortType)
+            {
+                case "bubble":
+                    if (sortValue == "name")
+                    {
+                        result = SortHelper.BubbleSortByName(this.animals);
+                    }
+                    else if (sortValue == "weight")
+                    {
+                        result = SortHelper.BubbleSortByWeight(this.animals);
+                    }
+                    
+                    break;
+
+                case "insertion":
+                    if (sortValue == "name")
+                    {
+                        result = SortHelper.InsertionSortByName(this.animals);
+                    }
+                    else if (sortValue == "weight")
+                    {
+                        result = SortHelper.InsertionSortByWeight(this.animals);
+                    }
+
+                    break;
+
+                case "selection":
+                    if (sortValue == "name")
+                    {
+                        result = SortHelper.SelectionSortByName(this.animals);
+                    }
+                    else if (sortValue == "weight")
+                    {
+                        result = SortHelper.SelectionSortByWeight(this.animals);
+                    }
+
+                    break;
+
+                default:
+                    break;
+            }
+
+            return result;
         }
     }
 }

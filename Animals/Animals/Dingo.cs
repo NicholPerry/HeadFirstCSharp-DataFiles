@@ -19,25 +19,7 @@ namespace Animals
             : base(name, age, weight, gender)
         {
             this.BabyWeightPercentage = 10.0;
-        }
-
-        /// <summary>
-        /// Eats the specified food.
-        /// </summary>
-        /// <param name="food">The food to eat.</param>
-        public override void Eat(Food food)
-        {
-            base.Eat(food);
-
-            this.Bark();
-        }
-
-        /// <summary>
-        /// Makes a barking noise.
-        /// </summary>
-        private void Bark()
-        {
-            // Bark in excitement.
+            this.EatBehavior = new BuryAndEatBoneBehavior();
         }
     }
 }

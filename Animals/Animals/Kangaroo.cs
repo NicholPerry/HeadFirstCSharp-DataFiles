@@ -19,13 +19,5 @@ namespace Animals
         {
             this.BabyWeightPercentage = 13.0;
         }
-
-        /// <summary>
-        /// Moves by hopping.
-        /// </summary>
-        public override void Move()
-        {
-            // The kangaroo generally moves by hopping.
-        }
     }
 }

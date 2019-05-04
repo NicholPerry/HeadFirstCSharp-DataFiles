@@ -285,6 +285,11 @@ namespace ZooConsole
             }
         }
 
+        /// <summary>
+        /// The method to show the animals cage.
+        /// </summary>
+        /// <param name="zoo"> The zoo for the animal. </param>
+        /// <param name="animalName"> The animals name. </param>
         private static void ShowCage(Zoo zoo, string animalName)
         {
             Animal animal = zoo.FindAnimal(ConsoleUtil.InitialUpper(animalName));
@@ -294,12 +299,10 @@ namespace ZooConsole
                 Cage cage = zoo.FindCage(animal.GetType());
                 Console.WriteLine(cage.ToString());
             }
-
             else
             {
                 Console.WriteLine("The animal " + animalName + " could not be found.");
             }
-
         }
 
         /// <summary>

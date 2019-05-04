@@ -13,17 +13,20 @@
         <RepeatButton  x:Name="increaseTemperatureButton" Content="+" HorizontalAlignment="Right" Margin="0,0,48.6,40" VerticalAlignment="Bottom" Width="23" Height="23" RenderTransformOrigin="-1.574,-1.383" Click="IncreaseTemperatureButton_Click"/>
         <RepeatButton  x:Name="decreaseTemperatureButton" Content="-" HorizontalAlignment="Right" Margin="0,0,48.6,12" VerticalAlignment="Bottom" Width="23" Height="23" Click="DecreaseTemperatureButton_Click"/>
         <Label x:Name="temperatureLabel" Content="Temp" HorizontalAlignment="Right" Margin="0,0,34.6,68" VerticalAlignment="Bottom" Width="40" Height="30"/>
-        <ListBox x:Name="animalListBox" HorizontalAlignment="Left" Height="246" Margin="115,35,0,0" VerticalAlignment="Top" Width="175" MouseDoubleClick="AnimalListBox_MouseDoubleClick"/>
-        <ListBox x:Name="guestListBox" HorizontalAlignment="Left" Height="246" Margin="325,35,0,0" VerticalAlignment="Top" Width="175" Cursor="" MouseDoubleClick="GuestListBox_MouseDoubleClick"/>
+        <ListBox x:Name="animalListBox" HorizontalAlignment="Left" Height="210" Margin="115,35,0,0" VerticalAlignment="Top" Width="175" MouseDoubleClick="AnimalListBox_MouseDoubleClick"/>
+        <ListBox x:Name="guestListBox" HorizontalAlignment="Left" Height="210" Margin="325,35,0,0" VerticalAlignment="Top" Width="175" Cursor="" MouseDoubleClick="GuestListBox_MouseDoubleClick"/>
         <Label Content="Animals" HorizontalAlignment="Left" Margin="115,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.266,0.406"/>
         <Label Content="Guests" HorizontalAlignment="Left" Margin="325,4,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="addAnimalButton" Content="Add Animal" HorizontalAlignment="Left" Margin="115,298,0,0" VerticalAlignment="Top" Width="75" Click="AddAnimalButton_Click"/>
-        <ComboBox x:Name="animalTypeComboBox" HorizontalAlignment="Left" Margin="115,328,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="removeAnimalButton" Content="Remove Animal" HorizontalAlignment="Left" Margin="195,298,0,0" VerticalAlignment="Top" Width="95" Click="RemoveAnimalButton_Click"/>
-        <Button x:Name="removeGuestButton" Content="Remove Guest" HorizontalAlignment="Left" Margin="410,298,0,0" VerticalAlignment="Top" Width="90" Click="RemoveGuestButton_Click"/>
-        <Button x:Name="addGuest" Content="Add Guest" HorizontalAlignment="Left" Margin="325,298,0,0" VerticalAlignment="Top" Width="75" Click="AddGuest_Click"/>
+        <Button x:Name="addAnimalButton" Content="Add Animal" HorizontalAlignment="Left" Margin="115,255,0,0" VerticalAlignment="Top" Width="95" Click="AddAnimalButton_Click"/>
+        <ComboBox x:Name="animalTypeComboBox" HorizontalAlignment="Left" Margin="220,255,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="removeAnimalButton" Content="Remove Animal" HorizontalAlignment="Left" Margin="115,279,0,0" VerticalAlignment="Top" Width="95" Click="RemoveAnimalButton_Click"/>
+        <Button x:Name="removeGuestButton" Content="Remove Guest" HorizontalAlignment="Left" Margin="410,255,0,0" VerticalAlignment="Top" Width="90" Click="RemoveGuestButton_Click"/>
+        <Button x:Name="addGuest" Content="Add Guest" HorizontalAlignment="Left" Margin="325,255,0,0" VerticalAlignment="Top" Width="75" Click="AddGuest_Click"/>
         <Button x:Name="showCageButton" Content="Show Cage" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="85" Click="ShowCageButton_Click"/>
         <Button x:Name="adoptAnimalButton" Content="Adopt Animal" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Width="85" Click="AdoptAnimalButton_Click"/>
         <Button x:Name="unadoptAnimalButton" Content="Unadopt Animal" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="85" Click="UnadoptAnimalButton_Click" FontSize="11"/>
+        <Button x:Name="changeMoveBehaviorButton" Content="Change Behavior" HorizontalAlignment="Left" Margin="115,303,0,0" VerticalAlignment="Top" Width="95" Click="ChangeMoveBehaviorButton_Click"/>
+        <ComboBox x:Name="changeMoveBehaviorComboBox" HorizontalAlignment="Left" Margin="220,303,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="birthAnimalButton" Content="Give Birth" HorizontalAlignment="Left" Margin="115,330,0,0" VerticalAlignment="Top" Width="95" Click="BirthAnimalButton_Click"/>
     </Grid>
 </Window>

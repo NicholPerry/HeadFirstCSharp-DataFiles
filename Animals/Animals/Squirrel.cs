@@ -1,4 +1,5 @@
-﻿using Reproducers;
+﻿using Animals;
+using Reproducers;
 
 namespace Animals
 {
@@ -18,14 +19,7 @@ namespace Animals
             : base(name, age, weight, gender)
         {
             this.BabyWeightPercentage = 17.0;
-        }
-
-        /// <summary>
-        /// Moves by climbing.
-        /// </summary>
-        public override void Move()
-        {
-            // The squirrel generally moves climbing and scurrying.
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.NoMove);
         }
     }
 }

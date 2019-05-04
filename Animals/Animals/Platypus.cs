@@ -1,5 +1,7 @@
-﻿using Foods;
+﻿using Animals;
+using Foods;
 using Reproducers;
+using Utilities;
 
 namespace Animals
 {
@@ -19,6 +21,9 @@ namespace Animals
             : base(name, age, weight, gender)
         {
             this.BabyWeightPercentage = 12.0;
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.Swim);
+            this.EatBehavior = new ShowAffectionBehavior();
+            this.ReproduceBehavior = new LayEggBehavior();
         }
 
         /// <summary>
@@ -33,79 +38,11 @@ namespace Animals
         }
 
         /// <summary>
-        /// Eats the specified food.
-        /// </summary>
-        /// <param name="food">The food to eat.</param>
-        public override void Eat(Food food)
-        {
-            this.StashInPouch(food);
-
-            base.Eat(food);
-        }
-
-        /// <summary>
         /// Hatches the animal.
         /// </summary>
         public void Hatch()
         {
             // The animal hatches from an egg.
-        }
-
-        /// <summary>
-        /// Moves by swimming.
-        /// </summary>
-        public override void Move()
-        {
-            // Swim. Note that there is a base method that paces, which we are intentionally avoiding.
-        }
-
-        /// <summary>
-        /// Creates another reproducer of its own type.
-        /// </summary>
-        /// <returns>The resulting baby reproducer.</returns>
-        public override IReproducer Reproduce()
-        {
-            // Lay an egg.
-            IReproducer result = this.LayEgg();
-
-            // If the baby is hatchable...
-            if (result is IHatchable)
-            {
-                // Hatch the baby (egg).
-                this.HatchEgg(result as IHatchable);
-            }
-
-            // Return the (hatched) baby.
-            return result;
-        }
-
-        /// <summary>
-        /// Hatches an egg.
-        /// </summary>
-        /// <param name="egg">The egg to hatch.</param>
-        private void HatchEgg(IHatchable egg)
-        {
-            // Hatch the egg.
-            egg.Hatch();
-        }
-
-        /// <summary>
-        /// Lays an egg.
-        /// </summary>
-        /// <returns>The resulting egg.</returns>
-        private IReproducer LayEgg()
-        {
-            // Return the baby (egg) from the base Reproduce method.
-            return base.Reproduce();
-        }
-
-        /// <summary>
-        /// Stashes food in its cheek pouches.
-        /// </summary>
-        /// <param name="food">The food to be stashed.</param>
-        private void StashInPouch(Food food)
-        {
-            // Stash food to eat later.
         }
     }
 }

@@ -13,13 +13,18 @@ namespace Accounts
         private decimal moneyBalance;
 
         /// <summary>
-        /// Gets the accounts money balance.
+        /// Gets or sets the accounts money balance.
         /// </summary>
         public decimal MoneyBalance
         {
             get
             {
                 return this.moneyBalance;
+            }
+
+            set
+            {
+                this.moneyBalance = value;
             }
         }
 

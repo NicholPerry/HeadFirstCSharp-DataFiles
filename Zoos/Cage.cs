@@ -80,7 +80,7 @@ namespace Zoos
         {
             string result = null;
 
-            result = string.Format("{0} {1} ({2}x{3})", AnimalType.Name, "cage", Width, Height);
+            result = string.Format("{0} {1} ({2}x{3})", this.AnimalType.Name, "cage", this.Width, this.Height);
 
             foreach (ICageable c in this.cagedItems)
             {

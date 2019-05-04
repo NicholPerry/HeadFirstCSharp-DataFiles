@@ -1,4 +1,5 @@
-﻿using Reproducers;
+﻿using Animals;
+using Reproducers;
 using Utilities;
 
 namespace Animals
@@ -19,6 +20,7 @@ namespace Animals
             : base(name, age, weight, gender)
         {
             this.BabyWeightPercentage = 30.0;
+            this.MoveBehavior = MoveBehaviorFactory.CreateMoveBehavior(MoveBehaviorType.Pace);
         }
 
         /// <summary>
@@ -29,49 +31,6 @@ namespace Animals
             get
             {
                 return this.Age == 0 ? 0.4 : 0.8;
-            }
-        }
-
-        /// <summary>
-        /// Moves by pacing.
-        /// </summary>
-        public override void Move()
-        {
-            // Moves by pacing; the ostrich will not fly.
-            // Pace.
-            if (this.XDirection == HorizontalDirection.Right)
-            {
-                // If the animal position, and the distance they will move, is less than the max bounds of the window.
-                if (this.XPosition + this.MoveDistance > this.XPositionMax)
-                {
-                    // The current position is now the right boundary of the window.
-                    this.XPosition = this.XPositionMax;
-
-                    // The animal will move left.
-                    this.XDirection = HorizontalDirection.Left;
-                }
-                else
-                {
-                    // Move the animal to the right by its step distance.
-                    this.XPosition += this.MoveDistance;
-                }
-            }
-            else
-            {
-                // Takes the animals current position (right) and subtracts the number of steps to move, if boundary is less than 0...
-                if (this.XPosition - this.MoveDistance < 0)
-                {
-                    // Boundary position gets set to zero.
-                    this.XPosition = 0;
-
-                    // The animal will move right.
-                    this.XDirection = HorizontalDirection.Right;
-                }
-                else
-                {
-                    // Move the animal to the left by its step distance.
-                    this.XPosition -= this.MoveDistance;
-                }
             }
         }
     }
