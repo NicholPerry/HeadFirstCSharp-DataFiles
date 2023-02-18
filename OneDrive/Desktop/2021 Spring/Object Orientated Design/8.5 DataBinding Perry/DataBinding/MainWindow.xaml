@@ -1,0 +1,22 @@
+﻿<Window x:Class="DataBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBinding"
+        mc:Ignorable="d"
+        Title="Data Binding" Height="160" Width="350">
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions> 
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0" Height="40" Width="40" FontSize="24" TextAlignment="Center" Text="{Binding Path=BoundNumber, Mode=TwoWay}">
+        
+        </TextBox>
+        <Slider Grid.Row="1" VerticalAlignment="Center" Width="300" Maximum="100" Minimum="0" Value="{Binding Path=BoundNumber, Mode=TwoWay}"></Slider>
+    </Grid>
+</Window>
